@@ -1,4 +1,4 @@
-# Deploying a Docker Container to Kubernetes using Helm and Helm Charts - https://cloudfontech.com
+# Deploying a Docker Container to Kubernetes using Helm and Helm Charts
 
 When working on large projects that require multiple containers to be deployed to Kubernetes, managing these containers manually can quickly become overwhelming. You'll likely need to write separate deployment files, service files, and other configurations for each container. This process can become a nightmare, especially for larger projects. Fortunately, there's a solution to this problem called Helm.
 
