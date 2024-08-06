@@ -73,7 +73,6 @@ COPY styles.css /usr/share/nginx/html/
 
 ## Build and run the Docker image to test if the project works using docker
 
-```build-image
 docker build -t rock-paper-scissors .
 docker run -d -p 8008:80 rock-paper-scissors
 check with localhost:8008
@@ -81,7 +80,6 @@ docker stop <container id>
 
 ### Step 2: Push the Docker Image to Docker Hub
 
-```push-image
 docker login
 docker tag rock-paper-scissors iamvieve/rock-paper-scissors:latest
 docker push iamvieve/rock-paper-scissors:latest
@@ -89,7 +87,6 @@ docker push iamvieve/rock-paper-scissors:latest
 ### Step 3: Create a Helm Chart
 Create a new Helm chart named rock-paper-scissors:
 
-```create-helm
 helm create rock-paper-scissors
 
 ### Edit the values.yaml file in the rock-paper-scissors directory to customize the chart values. Update the image name, repo name, and tag: latest.
@@ -97,13 +94,11 @@ helm create rock-paper-scissors
 ### Step 4: Deploy the Helm Chart to Kubernetes
 Start Minikube and install the Helm chart:
 
-```helm-chart
 minikube start
 helm install my-release-rps ./rock-paper-scissors
 
 ### If this is your first time deploying a Helm chart, you may see a message with instructions on accessing your application:
 
-```helm
 NAME: my-release
 LAST DEPLOYED: Fri Apr 26 14:31:05 2024
 NAMESPACE: default
@@ -123,19 +118,16 @@ export 2
 
 Verify that the deployment was successful by checking the status of the pods if it says running:
 
-```kubctl
 kubectl get pods
 kubectl get services
 
 ### Access the application by running the command from the Helm output:
 
-```kubectl-container
 kubectl --namespace default port-forward $POD_NAME 8080:$CONTAINER_PORT
 
-### Navigate to http://localhost:8080 in your web browser to access the application.
+Navigate to http://localhost:8080 in your web browser to access the application.
 
 ### Step 5: Clean Up
 Uninstall the Helm release and clean up the resources:
 
-```delete-helm
 helm uninstall my-release-rps
